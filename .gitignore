@@ -1,0 +1,15 @@
+.metadata/*
+.recommenders/*
+*.metadata
+*.class
+*.bluej
+*.ctxt
+*.txt
+*.html
+*.css
+*.gif
+*.docx
+*/.project
+*/.settings
+*/.gitignore
+*/.classpath
