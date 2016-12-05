@@ -1,7 +1,6 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 public class Part2 {
