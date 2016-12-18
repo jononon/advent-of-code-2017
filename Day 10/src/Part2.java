@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Part1 {
+public class Part2 {
 	public static void main (String args[]) {
 		ArrayList<String> instructions = readFile("input.in");
 		
 		ArrayList<Bot> bots = new ArrayList<Bot>();
+		ArrayList<Output> outputs = new ArrayList<Output>();
 		
 		for(String instruction:instructions) {
 			Scanner s = new Scanner(instruction);
@@ -57,6 +58,20 @@ public class Part1 {
 						bots.add(lowBot);
 					}
 					currentBot.setLowBot(lowBot);
+				} else {
+					int lowBotNumber = s.nextInt();
+					Output lowBot = null;
+					for(int i = 0; i<outputs.size(); i++) {
+						if(outputs.get(i).getCollectionNumber()==lowBotNumber) {
+							lowBot = outputs.get(i);
+							break;
+						}
+					}
+					if(lowBot == null) {
+						lowBot = new Output(lowBotNumber);
+						outputs.add(lowBot);
+					}
+					currentBot.setLowBot(lowBot);
 				}
 				s.next();s.next();s.next();
 				if(s.next().equals("bot")) {
@@ -71,6 +86,20 @@ public class Part1 {
 					if(highBot == null) {
 						highBot = new Bot(highBotNumber);
 						bots.add(highBot);
+					}
+					currentBot.setHighBot(highBot);
+				} else {
+					int highBotNumber = s.nextInt();
+					Output highBot = null;
+					for(int i = 0; i<outputs.size(); i++) {
+						if(outputs.get(i).getCollectionNumber()==highBotNumber) {
+							highBot = outputs.get(i);
+							break;
+						}
+					}
+					if(highBot == null) {
+						highBot = new Output(highBotNumber);
+						outputs.add(highBot);
 					}
 					currentBot.setHighBot(highBot);
 				}
@@ -92,6 +121,14 @@ public class Part1 {
 				}
 			}
 		} while (cont);
+		
+		int product = 1;
+		for(int i = 0; i<3; i++) {
+			for(int j = 0; j<outputs.size(); j++)
+				if(outputs.get(j).getCollectionNumber()==i)
+					product*=outputs.get(j).getValues().get(0);
+		}
+		System.out.println(product);
 	}
 	
 	public static ArrayList<String> readFile (String filename) {

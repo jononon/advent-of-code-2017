@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class Bot {
+public class Bot implements Collection{
 	private int botNumber;
 	private int highValue;
 	private int lowValue;
-	private Bot highBot;
-	private Bot lowBot;
+	private Collection highBot;
+	private Collection lowBot;
 	
 	public Bot (int botNumber) {
 		this.botNumber = botNumber;
@@ -46,15 +46,15 @@ public class Bot {
 		return false;
 	}
 	
-	public void setHighBot(Bot highBot) {
+	public void setHighBot(Collection highBot) {
 		this.highBot = highBot;
 	}
 	
-	public void setLowBot(Bot lowBot) {
+	public void setLowBot(Collection lowBot) {
 		this.lowBot = lowBot;
 	}
 
-	public int getBotNumber() {
+	public int getCollectionNumber() {
 		return this.botNumber;
 	}
 	
